@@ -95,7 +95,9 @@ void recvThread(int sd) {
 		}
 	}
 	cout << "disconnected\n";
+	pthread_mutex_lock(&lock);
 	clients.erase(sd);
+	pthread_mutex_unlock(&lock);
 	close(sd);
 }
 
